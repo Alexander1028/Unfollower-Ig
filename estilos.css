@@ -1,0 +1,275 @@
+/* 1. VARIABLES GLOBALES */
+:root {
+    --bg-color: #0a0a0c;
+    --card-bg: #16161a;
+    --accent-color: #00d2ff;
+    --text-main: #ffffff;
+    --text-dim: #a0a0a0;
+    /* Variables para el movimiento del mouse (valor inicial: centro) */
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+}
+
+/* 2. ESTILOS BASE Y FONDO INTERACTIVO */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    
+    /* Degradado dinámico que sigue al cursor */
+    background-image: radial-gradient(
+        circle at var(--mouse-x) var(--mouse-y), 
+        rgba(0, 210, 255, 0.15) 0%, 
+        transparent 50%
+    );
+    
+    background-attachment: fixed;
+    overflow-x: hidden;
+    transition: background-image 0.1s ease; /* Suaviza un poco el movimiento */
+}
+
+/* Ocultar rastro de clases viejas */
+.background-glow {
+    display: none;
+}
+
+/* 3. NAVEGACIÓN Y LOGO */
+.navbar {
+    width: 100%;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+}
+
+.logo-container {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 8px 20px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    backdrop-filter: blur(5px);
+}
+
+.logo-container img { 
+    width: 25px; 
+}
+
+/* 4. SECCIÓN HERO */
+.hero-section {
+    text-align: center;
+    margin: 40px 0;
+    z-index: 10;
+}
+
+.hero-section h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    text-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+}
+
+.hero-section p {
+    color: var(--text-dim);
+    font-size: 1.1rem;
+}
+
+/* 5. TARJETA DE INSTRUCCIONES */
+.tarjeta-instrucciones {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    max-width: 450px;
+    text-align: center;
+    margin: 20px;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.icono-ig {
+    width: 50px;
+    margin-bottom: 15px;
+}
+
+.lista-pasos {
+    text-align: left;
+    margin: 20px 0;
+}
+
+.paso {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    border-left: 3px solid var(--accent-color);
+}
+
+.link-descarga {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.link-descarga:hover {
+    text-decoration: underline;
+}
+
+/* 6. BOTONES Y ACCIONES */
+.btn-action {
+    background: var(--accent-color);
+    color: black;
+    border: none;
+    padding: 14px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    transition: 0.3s ease;
+}
+
+.btn-action:hover {
+    filter: brightness(1.2);
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
+}
+
+code {
+    background: #333;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+    color: #ffcc00;
+}
+
+/* 7. MODAL / OVERLAY */
+.login-overlay {
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s;
+    z-index: 100;
+}
+
+.login-overlay.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.login-box {
+    background: #1c1c21;
+    padding: 30px;
+    border-radius: 25px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-dim);
+}
+
+.close-btn:hover {
+    color: var(--text-main);
+}
+
+.input-modern {
+    width: 100%;
+    padding: 12px;
+    background: #000;
+    border: 1px solid #333;
+    border-radius: 10px;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+    box-sizing: border-box; 
+}
+
+.copy-status {
+    display: none;
+    margin-top: 10px;
+    color: #00ff88;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+/* Estilos del Footer */
+.footer-infinito {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03); /* Fondo casi invisible */
+    backdrop-filter: blur(5px);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 15px 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    overflow: hidden; /* Oculta el texto que sale de la pantalla */
+    z-index: 20;
+}
+
+.marquee {
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+}
+
+.marquee-content {
+    display: flex;
+    white-space: nowrap;
+    animation: desplazamiento-infinito 20s linear infinite;
+}
+
+.marquee-content span {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--accent-color); /* Usamos tu azul cian */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding-right: 50px; /* Espacio entre cada repetición */
+}
+
+/* Animación del movimiento */
+@keyframes desplazamiento-infinito {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* Pausar al pasar el mouse (opcional, le da un toque pro) */
+.footer-infinito:hover .marquee-content {
+    animation-play-state: paused;
+}
